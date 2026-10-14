@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -27,11 +27,12 @@
 
     header h1 {
       margin: 0 0 10px;
-      font-size: 30px;
+      font-size: 32px;
     }
 
     header p {
       margin: 0;
+      line-height: 1.6;
     }
 
     main {
@@ -85,23 +86,49 @@
     #historia h2 {
       color: #087e8b;
       margin-top: 0;
+      text-align: center;
+    }
+
+    #historia h3 {
+      color: #123b68;
+      margin-top: 25px;
+      border-left: 4px solid #168aad;
+      padding-left: 10px;
+    }
+
+    #historia p {
+      line-height: 1.8;
+      color: #334b66;
+    }
+
+    .destaque {
+      background: #eaf6f8;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 20px;
     }
 
     #voltar {
+      display: block;
       background: #123b68;
       color: white;
       border: none;
       border-radius: 8px;
       padding: 12px 18px;
       cursor: pointer;
-      margin-top: 15px;
+      margin: 25px auto 0;
       font-size: 15px;
+    }
+
+    #voltar:hover {
+      background: #087e8b;
     }
 
     footer {
       padding: 20px;
       color: #52677f;
       font-size: 13px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -110,26 +137,41 @@
 
   <header>
     <h1>🏆 Mundo dos Esportes</h1>
-    <p>Escolha uma bola e descubra a história do esporte!</p>
+    <p>Conheça a história, as regras e a importância dos esportes para o Brasil!</p>
   </header>
 
   <main>
     <h2>Conheça os esportes</h2>
-    <p>Clique em uma das bolas abaixo.</p>
+    <p>Escolha uma bola para descobrir a história de cada modalidade.</p>
 
     <section class="esportes" id="lista"></section>
 
     <section id="historia" aria-live="polite">
       <h2 id="titulo"></h2>
-      <p id="texto"></p>
+
+      <h3>📚 Origem e história</h3>
+      <p id="origem"></p>
+
+      <h3>🎯 Como funciona?</h3>
+      <p id="regras"></p>
+
+      <h3>🇧🇷 Importância para o Brasil</h3>
+      <p id="brasil"></p>
+
+      <div class="destaque">
+        <h3>💡 Curiosidade</h3>
+        <p id="curiosidade"></p>
+      </div>
+
       <button id="voltar" onclick="voltar()">
-        Voltar aos esportes
+        ← Voltar aos esportes
       </button>
     </section>
   </main>
 
   <footer>
-    Mundo dos Esportes — Aprender também é jogar!
+    Mundo dos Esportes — Aprender também é jogar!<br>
+    Conhecimento, cultura, história e respeito por todas as modalidades.
   </footer>
 
   <script>
@@ -137,81 +179,211 @@
       {
         nome: "Futebol",
         bola: "⚽",
-        historia:
-          "O futebol moderno foi organizado na Inglaterra, " +
-          "em 1863, com a criação de regras oficiais. " +
-          "Hoje, é um dos esportes mais populares do mundo."
+        origem:
+          "Jogos com bolas e os pés existem há muitos séculos em diferentes sociedades. " +
+          "O futebol moderno teve suas regras organizadas na Inglaterra, em 1863, " +
+          "com a criação da Football Association. Ao longo do tempo, o esporte se " +
+          "espalhou pelo mundo e passou a ser disputado em campeonatos nacionais " +
+          "e internacionais.",
+        regras:
+          "Duas equipes, normalmente com 11 jogadores cada, disputam uma partida. " +
+          "O objetivo é marcar gols colocando a bola na meta adversária. Os jogadores " +
+          "de linha não podem tocar intencionalmente na bola com as mãos ou os braços, " +
+          "com exceções previstas nas regras, como a cobrança de lateral. Vence quem " +
+          "marca mais gols dentro do tempo regulamentar.",
+        brasil:
+          "O futebol chegou ao Brasil no final do século XIX e se tornou parte importante " +
+          "da cultura nacional. O país conquistou cinco Copas do Mundo masculinas, " +
+          "em 1958, 1962, 1970, 1994 e 2002. Jogadores como Pelé, Marta, Ronaldo e " +
+          "Formiga marcaram a história da modalidade. O futebol também movimenta " +
+          "a economia, gera empregos e cria espaços de convivência em comunidades. " +
+          "Apesar de sua popularidade, é importante ampliar oportunidades e combater " +
+          "o racismo e a desigualdade no esporte.",
+        curiosidade:
+          "A Seleção Brasileira masculina é a única que conquistou cinco títulos da Copa do Mundo masculina."
       },
       {
         nome: "Basquete",
         bola: "🏀",
-        historia:
-          "O basquete foi criado em 1891 por James Naismith, " +
-          "nos Estados Unidos, para que seus alunos " +
-          "praticassem esporte em ambientes fechados."
+        origem:
+          "O basquete foi criado em 1891 pelo professor canadense James Naismith, " +
+          "nos Estados Unidos. Ele buscava uma atividade que pudesse ser praticada " +
+          "em ambientes fechados durante o inverno. No início, foram usadas cestas " +
+          "de pêssegos como alvos. O esporte evoluiu e ganhou regras próprias, " +
+          "tornando-se uma modalidade olímpica em 1936.",
+        regras:
+          "Duas equipes de cinco jogadores tentam marcar pontos arremessando a bola " +
+          "na cesta adversária. Um arremesso comum vale dois pontos, um arremesso " +
+          "feito de fora da linha de três pontos vale três, e cada lance livre convertido " +
+          "vale um ponto. Os jogadores precisam quicar a bola enquanto se deslocam " +
+          "e respeitar as regras de contato e de movimentação.",
+        brasil:
+          "O basquete tem uma trajetória importante no Brasil. As seleções brasileiras " +
+          "masculinas conquistaram o Mundial de 1959 e o de 1963. Atletas como " +
+          "Oscar Schmidt e Hortência se tornaram referências da modalidade. O esporte " +
+          "também é praticado em escolas, clubes e projetos sociais, ajudando no " +
+          "desenvolvimento do trabalho em equipe, da disciplina e da coordenação motora.",
+        curiosidade:
+          "Oscar Schmidt ficou conhecido como um dos grandes pontuadores da história do basquete e foi incluído no Hall da Fama do basquete."
       },
       {
         nome: "Vôlei",
         bola: "🏐",
-        historia:
-          "O voleibol foi criado em 1895 por William G. Morgan, " +
-          "nos Estados Unidos. O objetivo era oferecer " +
-          "uma atividade com menos contato físico."
+        origem:
+          "O voleibol foi criado em 1895 por William G. Morgan, nos Estados Unidos. " +
+          "Inicialmente chamado de mintonette, o jogo foi pensado como uma atividade " +
+          "que combinasse movimento e menor contato físico direto entre os participantes. " +
+          "Com a criação e a padronização das regras, o vôlei se espalhou por vários " +
+          "países e entrou no programa olímpico em 1964.",
+        regras:
+          "Duas equipes ficam em lados opostos de uma rede. Cada equipe pode dar " +
+          "até três toques para devolver a bola ao outro lado, sem contar o toque " +
+          "no bloqueio conforme as regras oficiais. O objetivo é fazer a bola tocar " +
+          "o chão da quadra adversária ou provocar um erro do outro time. A comunicação " +
+          "e a organização entre os jogadores são fundamentais.",
+        brasil:
+          "O vôlei é um dos esportes de maior destaque no Brasil. As seleções brasileiras " +
+          "conquistaram importantes títulos olímpicos e mundiais, tanto no masculino " +
+          "quanto no feminino. Atletas como Giba, Fofão, Sheilla e Serginho se destacaram " +
+          "em diferentes gerações. A modalidade é muito praticada em escolas, clubes " +
+          "e praias, contribuindo para a formação esportiva e para o lazer da população.",
+        curiosidade:
+          "O Brasil conquistou o ouro olímpico no vôlei masculino em 1992, 2004 e 2016, e no feminino em 2008 e 2012."
       },
       {
         nome: "Tênis",
         bola: "🎾",
-        historia:
-          "O tênis moderno se desenvolveu na Inglaterra " +
-          "no século XIX. O esporte é disputado " +
-          "individualmente ou em duplas."
+        origem:
+          "O tênis moderno se desenvolveu na Inglaterra durante o século XIX, a partir " +
+          "de jogos anteriores praticados com raquetes e bolas. Suas regras foram " +
+          "organizadas gradualmente, e grandes torneios internacionais ajudaram a " +
+          "popularizar o esporte. Atualmente, as partidas podem ser individuais ou " +
+          "disputadas em duplas.",
+        regras:
+          "Os jogadores usam raquetes para enviar a bola por cima da rede e fazê-la " +
+          "quicar dentro dos limites da quadra adversária. A pontuação utiliza " +
+          "termos como 15, 30, 40 e game. Os pontos são agrupados em games e sets, " +
+          "e vence a partida quem ganha a quantidade necessária de sets. É preciso " +
+          "combinar precisão, movimentação e estratégia.",
+        brasil:
+          "O tênis brasileiro ganhou projeção internacional com atletas como Gustavo " +
+          "Kuerten, conhecido como Guga, tricampeão de Roland Garros e ex-número " +
+          "um do mundo. Maria Esther Bueno também teve uma carreira histórica. " +
+          "Esses atletas ajudaram a aumentar o interesse pelo esporte no país. " +
+          "O tênis ainda pode contribuir para a coordenação, a concentração e a " +
+          "disciplina de quem o pratica.",
+        curiosidade:
+          "Gustavo Kuerten conquistou Roland Garros em 1997, 2000 e 2001."
       },
       {
         nome: "Beisebol",
         bola: "⚾",
-        historia:
-          "O beisebol se desenvolveu a partir de jogos " +
-          "de taco e bola. Tornou-se especialmente popular " +
-          "nos Estados Unidos durante o século XIX."
+        origem:
+          "O beisebol moderno se desenvolveu a partir de diferentes jogos de taco e bola, " +
+          "ganhando organização nos Estados Unidos durante o século XIX. Com o tempo, " +
+          "foram estabelecidas regras para as entradas, as bases e as eliminações. " +
+          "O esporte se popularizou em países como Japão, Cuba e Coreia do Sul.",
+        regras:
+          "Duas equipes se alternam entre atacar e defender. No ataque, um jogador " +
+          "rebate a bola lançada pelo adversário e tenta percorrer as quatro bases " +
+          "para marcar uma corrida. Na defesa, os jogadores procuram recuperar a bola " +
+          "e eliminar os corredores ou rebatedores conforme as regras. A estratégia " +
+          "tem papel importante em cada jogada.",
+        brasil:
+          "No Brasil, o beisebol tem uma presença importante em comunidades de " +
+          "ascendência japonesa e é praticado em clubes e projetos esportivos. " +
+          "Embora seja menos popular que o futebol e o vôlei, ajuda a promover " +
+          "o intercâmbio cultural e oferece oportunidades de participação em " +
+          "competições nacionais e internacionais. O esporte exige cooperação, " +
+          "atenção e tomada de decisões.",
+        curiosidade:
+          "O beisebol fez parte dos Jogos Olímpicos em diferentes edições e retornou ao programa olímpico em Tóquio 2020, realizada em 2021."
       },
       {
         nome: "Handebol",
         bola: "🤾",
-        historia:
-          "O handebol moderno foi desenvolvido na Europa, " +
-          "especialmente no final do século XIX e início " +
-          "do século XX. É jogado com as mãos."
+        origem:
+          "O handebol moderno foi desenvolvido na Europa entre o final do século XIX " +
+          "e o início do século XX. Suas regras foram sendo organizadas até chegar " +
+          "à versão de quadra conhecida atualmente. O esporte entrou no programa " +
+          "olímpico masculino em 1972 e no feminino em 1976.",
+        regras:
+          "Duas equipes de sete jogadores, incluindo o goleiro, tentam marcar gols " +
+          "na meta adversária usando principalmente as mãos. O jogador pode dar " +
+          "até três passos sem quicar a bola e deve respeitar o tempo e as regras " +
+          "de posse. O jogo combina velocidade, passes, arremessos e trabalho coletivo.",
+        brasil:
+          "O handebol é muito praticado nas escolas brasileiras e tem presença em " +
+          "competições estudantis e clubes. A seleção feminina conquistou o Campeonato " +
+          "Mundial de 2013, um dos maiores resultados da história da modalidade no país. " +
+          "O esporte ajuda a desenvolver agilidade, raciocínio rápido, cooperação e " +
+          "respeito às regras.",
+        curiosidade:
+          "O título mundial feminino de 2013 foi conquistado na Sérvia, quando o Brasil venceu a seleção anfitriã na final."
       },
       {
         nome: "Golfe",
         bola: "⛳",
-        historia:
-          "O golfe moderno está ligado à Escócia, " +
-          "onde o esporte ganhou regras e popularidade " +
-          "a partir de vários séculos atrás."
+        origem:
+          "O golfe moderno está associado à Escócia, onde o esporte ganhou regras e " +
+          "organização ao longo de vários séculos. A modalidade é praticada em campos " +
+          "com diferentes tipos de terreno e obstáculos. O objetivo é concluir cada " +
+          "buraco com o menor número possível de tacadas.",
+        regras:
+          "Os jogadores utilizam tacos diferentes para lançar uma pequena bola em " +
+          "direção ao buraco. Cada campo possui uma quantidade prevista de tacadas, " +
+          "chamada par. O resultado é calculado comparando o número de tacadas " +
+          "realizadas com o par de cada buraco. Precisão, paciência e planejamento " +
+          "são habilidades importantes.",
+        brasil:
+          "O golfe é menos difundido no Brasil do que modalidades como futebol e vôlei, " +
+          "mas conta com clubes, campos e praticantes em diferentes regiões. A volta " +
+          "do golfe aos Jogos Olímpicos do Rio de Janeiro, em 2016, ajudou a dar " +
+          "visibilidade à modalidade. Ampliar o acesso a campos e projetos de iniciação " +
+          "é um desafio para tornar o esporte mais acessível.",
+        curiosidade:
+          "O golfe voltou ao programa olímpico nos Jogos do Rio de Janeiro, em 2016, após uma longa ausência."
       },
       {
         nome: "Rúgbi",
         bola: "🏉",
-        historia:
-          "O rúgbi moderno surgiu na Inglaterra " +
-          "no século XIX. É um esporte coletivo " +
-          "que combina corrida, passes e estratégia."
+        origem:
+          "O rúgbi moderno se desenvolveu na Inglaterra durante o século XIX. " +
+          "A modalidade ganhou regras próprias e se dividiu em diferentes formatos, " +
+          "incluindo o rúgbi de 15 jogadores e o de sete, conhecido como sevens. " +
+          "O esporte se espalhou por países como Nova Zelândia, África do Sul, " +
+          "Austrália e Inglaterra.",
+        regras:
+          "As equipes tentam marcar pontos levando a bola até a área de pontuação " +
+          "adversária, chutando-a entre os postes ou utilizando outras formas previstas " +
+          "nas regras. A bola pode ser passada com as mãos para trás ou para o lado, " +
+          "mas não para a frente. A partida exige estratégia, resistência física, " +
+          "cooperação e respeito ao adversário.",
+        brasil:
+          "O rúgbi brasileiro vem crescendo por meio de clubes, universidades e " +
+          "projetos de iniciação. A seleção feminina de rúgbi sevens, conhecida como " +
+          "Yaras, tem contribuído para dar visibilidade à modalidade. O rúgbi também " +
+          "valoriza princípios como respeito, solidariedade e espírito de equipe. " +
+          "Apesar dos avanços, ainda enfrenta o desafio de ampliar sua popularidade.",
+        curiosidade:
+          "O rúgbi sevens, disputado por equipes de sete jogadores, estreou nos Jogos Olímpicos em 2016, no Rio de Janeiro."
       }
     ];
 
     const lista = document.getElementById("lista");
+    const historia = document.getElementById("historia");
 
     esportes.forEach((esporte) => {
       const botao = document.createElement("button");
 
       botao.className = "esporte";
       botao.innerHTML =
-        `<span class="bola" aria-hidden="true">` +
-        `${esporte.bola}</span>${esporte.nome}`;
+        `<span class="bola" aria-hidden="true">${esporte.bola}</span>` +
+        esporte.nome;
 
       botao.setAttribute(
-        "aria-label", "Conheça a história do " + esporte.nome
+        "aria-label",
+        "Conheça a história e a importância do " + esporte.nome
       );
 
       botao.onclick = () => abrirHistoria(esporte);
@@ -221,20 +393,40 @@
 
     function abrirHistoria(esporte) {
       document.getElementById("titulo").textContent =
-        esporte.bola + " História do " + esporte.nome;
+        esporte.bola + " " + esporte.nome;
 
-      document.getElementById("texto").textContent =
-        esporte.historia;
+      document.getElementById("origem").textContent =
+        esporte.origem;
+
+      document.getElementById("regras").textContent =
+        esporte.regras;
+
+      document.getElementById("brasil").textContent =
+        esporte.brasil;
+
+      document.getElementById("curiosidade").textContent =
+        esporte.curiosidade;
 
       lista.style.display = "none";
-      document.getElementById("historia").style.display = "block";
+      historia.style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
 
     function voltar() {
-      document.getElementById("historia").style.display = "none";
+      historia.style.display = "none";
       lista.style.display = "grid";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
   </script>
 
 </body>
 </html>
+```
