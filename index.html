@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundo dos Esportes</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      color: #183153;
+      text-align: center;
+    }
+
+    header {
+      background: #123b68;
+      color: white;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 24px 15px;
+    }
+
+    .esportes {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit, minmax(135px, 1fr)
+      );
+      gap: 16px;
+    }
+
+    .esporte {
+      border: 2px solid transparent;
+      border-radius: 16px;
+      background: white;
+      padding: 18px 8px;
+      cursor: pointer;
+      color: #183153;
+      font-size: 16px;
+      box-shadow: 0 3px 10px #00000012;
+      transition: 0.2s;
+    }
+
+    .esporte:hover,
+    .esporte:focus {
+      border-color: #168aad;
+      transform: translateY(-3px);
+    }
+
+    .bola {
+      display: block;
+      font-size: 55px;
+      margin-bottom: 10px;
+    }
+
+    #historia {
+      display: none;
+      background: white;
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: left;
+      box-shadow: 0 3px 12px #00000012;
+    }
+
+    #historia h2 {
+      color: #087e8b;
+      margin-top: 0;
+    }
+
+    #voltar {
+      background: #123b68;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      cursor: pointer;
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    footer {
+      padding: 20px;
+      color: #52677f;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🏆 Mundo dos Esportes</h1>
+    <p>Escolha uma bola e descubra a história do esporte!</p>
+  </header>
+
+  <main>
+    <h2>Conheça os esportes</h2>
+    <p>Clique em uma das bolas abaixo.</p>
+
+    <section class="esportes" id="lista"></section>
+
+    <section id="historia" aria-live="polite">
+      <h2 id="titulo"></h2>
+      <p id="texto"></p>
+      <button id="voltar" onclick="voltar()">
+        Voltar aos esportes
+      </button>
+    </section>
+  </main>
+
+  <footer>
+    Mundo dos Esportes — Aprender também é jogar!
+  </footer>
+
+  <script>
+    const esportes = [
+      {
+        nome: "Futebol",
+        bola: "⚽",
+        historia:
+          "O futebol moderno foi organizado na Inglaterra, " +
+          "em 1863, com a criação de regras oficiais. " +
+          "Hoje, é um dos esportes mais populares do mundo."
+      },
+      {
+        nome: "Basquete",
+        bola: "🏀",
+        historia:
+          "O basquete foi criado em 1891 por James Naismith, " +
+          "nos Estados Unidos, para que seus alunos " +
+          "praticassem esporte em ambientes fechados."
+      },
+      {
+        nome: "Vôlei",
+        bola: "🏐",
+        historia:
+          "O voleibol foi criado em 1895 por William G. Morgan, " +
+          "nos Estados Unidos. O objetivo era oferecer " +
+          "uma atividade com menos contato físico."
+      },
+      {
+        nome: "Tênis",
+        bola: "🎾",
+        historia:
+          "O tênis moderno se desenvolveu na Inglaterra " +
+          "no século XIX. O esporte é disputado " +
+          "individualmente ou em duplas."
+      },
+      {
+        nome: "Beisebol",
+        bola: "⚾",
+        historia:
+          "O beisebol se desenvolveu a partir de jogos " +
+          "de taco e bola. Tornou-se especialmente popular " +
+          "nos Estados Unidos durante o século XIX."
+      },
+      {
+        nome: "Handebol",
+        bola: "🤾",
+        historia:
+          "O handebol moderno foi desenvolvido na Europa, " +
+          "especialmente no final do século XIX e início " +
+          "do século XX. É jogado com as mãos."
+      },
+      {
+        nome: "Golfe",
+        bola: "⛳",
+        historia:
+          "O golfe moderno está ligado à Escócia, " +
+          "onde o esporte ganhou regras e popularidade " +
+          "a partir de vários séculos atrás."
+      },
+      {
+        nome: "Rúgbi",
+        bola: "🏉",
+        historia:
+          "O rúgbi moderno surgiu na Inglaterra " +
+          "no século XIX. É um esporte coletivo " +
+          "que combina corrida, passes e estratégia."
+      }
+    ];
+
+    const lista = document.getElementById("lista");
+
+    esportes.forEach((esporte) => {
+      const botao = document.createElement("button");
+
+      botao.className = "esporte";
+      botao.innerHTML =
+        `<span class="bola" aria-hidden="true">` +
+        `${esporte.bola}</span>${esporte.nome}`;
+
+      botao.setAttribute(
+        "aria-label", "Conheça a história do " + esporte.nome
+      );
+
+      botao.onclick = () => abrirHistoria(esporte);
+
+      lista.appendChild(botao);
+    });
+
+    function abrirHistoria(esporte) {
+      document.getElementById("titulo").textContent =
+        esporte.bola + " História do " + esporte.nome;
+
+      document.getElementById("texto").textContent =
+        esporte.historia;
+
+      lista.style.display = "none";
+      document.getElementById("historia").style.display = "block";
+    }
+
+    function voltar() {
+      document.getElementById("historia").style.display = "none";
+      lista.style.display = "grid";
+    }
+  </script>
+
+</body>
+</html>
